@@ -97,16 +97,32 @@ function FindLingue($id){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT Dir, Lingua FROM lingue INNER JOIN pages ON pages.Lingua = lingue.ID WHERE pages.ID = $id";
-
+    $sql = "SELECT Dir, lingue.Lingua FROM lingue INNER JOIN pages ON pages.Lingua = lingue.ID WHERE pages.ID = $id";
     $result = $conn->query($sql);
     $ret = "";
-    if($result!=null)
-        while($row = $result->fetch_assoc()){
-            $ret = $ret . '<li><a href="' . $row["Dir"] . '">' . $row["Lingua"] . '</a></li>';
-        }
+    while($row = $result->fetch_assoc()){
+        $ret = $ret . '<li><a href="' . $row["Dir"] . '">' . $row["Lingua"] . '</a></li>';
+    }
     return $ret;
     $conn->close();
+}
+
+function LinguaFromID($id){
+    $servername = "localhost";
+    $username = "Wiki";
+    $password = "password123";
+    $dbname = "wiki";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT Lingua FROM lingue WHERE ID = $id";
+    $result = $conn->query($sql);
+
+    $row = $result->fetch_assoc();
+    return $row["Lingua"];
 }
 
 function FindID(){
@@ -145,7 +161,12 @@ function LastID(){
 
     $result = $conn->query("SELECT MAX(ID) AS MAXID FROM pages");
     $row = $result->fetch_assoc();
+    if($row['MAXID']!=null){
+        $res = ++$row['MAXID'];
+    }
+    else
+        $res = 1;
 
-    return $row["MAXID"];
+    return $res;
 }
 ?>
