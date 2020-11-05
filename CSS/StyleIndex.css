@@ -1,0 +1,15 @@
+﻿body {
+    color:black;
+}
+
+.jumbotron{
+    background-color:aquamarine;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{
+    color:black;
+    background-color:aquamarine;
+}
+#searchResult {
+    display: none;
+    position: absolute;
+}

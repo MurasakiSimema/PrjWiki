@@ -1,0 +1,17 @@
+body {
+    color:black;
+}
+
+p2{
+text-align:justify;
+}
+
+img.thumb {
+    width: 10%px;
+    float: left;
+}
+
+img.full {
+    width: 30%;
+    float: right;
+}
