@@ -39,7 +39,19 @@
                 </ul>  
             </span>
         </div>
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Altre Lingue</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <?php
+                        $res = FindLingue({{ID}});
+                        echo $res;
+                    ?>
+                </ul>
+            </div>
+        </nav>
     </div>
 </body>
-
 </html>

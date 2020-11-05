@@ -12,15 +12,22 @@
 <body>
 <div class="form-group">
     <form action="Template.php" method="post">
+        <label>ID:</label>
+        <select class="form-control" name="ID">
+        <?php
+            require 'MySQL.php';
+            
+            $res1 = FindID();
+            echo $res1;
+        ?>
+        </select>
         <label>Titolo:</label>
         <input type="text" class="form-control" name="title" placeholder="Inserire il Titolo">
         <label>Lingua:</label>
         <select class="form-control" name="lingua">
         <?php
-            require 'MySQL.php';
-            
-            $res = ReadLingue();
-            echo $res;
+            $res2 = ReadLingue();
+            echo $res2;
         ?>
         </select>
         <label>Descrizione:</label>

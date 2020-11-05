@@ -10,7 +10,7 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    if($ID!=null){
+    if($ID!=-1){
     $sql = "INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione)
     VALUES ($lingua, $ID, '$title', '$dir', '$descrizione')";
     }
@@ -84,5 +84,68 @@ function FindPage($search){
 
     return $ret;
     $conn->close();
+}
+
+function FindLingue($id){
+    $servername = "localhost";
+    $username = "Wiki";
+    $password = "password123";
+    $dbname = "wiki";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT Dir, Lingua FROM lingue INNER JOIN pages ON pages.Lingua = lingue.ID WHERE pages.ID = $id";
+
+    $result = $conn->query($sql);
+    $ret = "";
+    if($result!=null)
+        while($row = $result->fetch_assoc()){
+            $ret = $ret . '<li><a href="' . $row["Dir"] . '">' . $row["Lingua"] . '</a></li>';
+        }
+    return $ret;
+    $conn->close();
+}
+
+function FindID(){
+    $servername = "localhost";
+    $username = "Wiki";
+    $password = "password123";
+    $dbname = "wiki";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql="SELECT Nome, pages.ID, lingue.Lingua FROM pages LEFT JOIN lingue ON pages.Lingua = lingue.ID";
+
+    $result = $conn->query($sql);
+    $ret = '<option value = ' . -1 . '>Nuova Pagina</option>';
+    while($row = $result->fetch_assoc()) {
+        $ret = $ret . '<option value = ' . $row["ID"] . '>' . $row["Nome"] . ', ' . $row["ID"] . ', ' . $row["Lingua"] . '</option>';
+    }
+
+    return $ret;
+    $conn->close();
+}
+
+function LastID(){
+    $servername = "localhost";
+    $username = "Wiki";
+    $password = "password123";
+    $dbname = "wiki";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $result = $conn->query("SELECT MAX(ID) AS MAXID FROM pages");
+    $row = $result->fetch_assoc();
+
+    return $row["MAXID"];
 }
 ?>

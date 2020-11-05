@@ -5,7 +5,7 @@ class Template {
     public static function parse($data = []) {
         $file = $_SERVER['DOCUMENT_ROOT'] . self::TEMPLATE_DIR . 'TemplateIT.php';
         $html = file_get_contents($file);
-        $variables = ['{{title}}', '{{desc}}', '{{par}}', '{{text}}', '{{thum}}', '{{full}}'];
+        $variables = ['{{title}}', '{{desc}}', '{{par}}', '{{text}}', '{{thum}}', '{{full}}', '{{ID}}'];
         $html_content = str_replace($variables, $data, $html);
         return $html_content;
     }
@@ -13,11 +13,11 @@ class Template {
         $html = self::parse($data);
         if(!empty($html)) {
             file_put_contents( $_SERVER['DOCUMENT_ROOT'] . '/PrjWiki/HTML/IT/' . $filename, $html);
-            InsertPage($ID=null, $_POST["title"], (int)$_POST["lingua"], '/PrjWiki/HTML/IT/' . $filename, $_POST["desc"]);
+            InsertPage((int)$_POST["ID"], $_POST["title"], (int)$_POST["lingua"], '/PrjWiki/HTML/IT/' . $filename, $_POST["desc"]);
         }
     }
 }
 
-$data=array($_POST["title"], $_POST["desc"], $_POST["par"], $_POST["text"], "../../IMG/Unit_ills_thum_" . $_POST["img"] . ".png", "../../IMG/Unit_ills_full_" . $_POST["img"] . ".png");
+$data=array($_POST["title"], $_POST["desc"], $_POST["par"], $_POST["text"], "../../IMG/Unit_ills_thum_" . $_POST["img"] . ".png", "../../IMG/Unit_ills_full_" . $_POST["img"] . ".png", $_POST["ID"]);   
 Template::save($data, "$data[0].php");
 ?>
