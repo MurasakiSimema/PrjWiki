@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PROGETTO WIKI
 
 ### Cose da fare
@@ -19,3 +20,7 @@
 * Template
 * Creazione pagine
 * Creazione README .md
+=======
+# PrjWiki
+Project Wiki
+>>>>>>> 5c57ad58e598949778d39808906726e57bf00e15
