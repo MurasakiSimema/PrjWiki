@@ -2,7 +2,6 @@
 # PROGETTO WIKI
 
 ### Cose da fare
-* Creazione link lingue
 * Database Utenze
 * Utente admin per creazione pagine
 * Creazione sistema modifica pagine
@@ -22,6 +21,7 @@
 <<<<<<< HEAD
 * Creazione automatica lista pagine
 * Scomparsa vecchia lista di pagine
+* Creazione link lingue
 =======
 >>>>>>> d21869fba4d5cb42847b2fabb79799cad2ec325f
 =======
