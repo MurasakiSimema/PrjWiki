@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="form-group">
-    <form action="GenPage.php" method="post">
+    <form action="Template.php" method="post">
         <label>ID:</label>
         <select class="form-control" name="ID">
         <?php

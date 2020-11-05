@@ -30,10 +30,10 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
     
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
-      echo '<br><a href="GenPage.php">Back</a>';
+      echo '<a href="PHP/CreaPageIT.php">Back</a>';
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
-      echo '<br><a href="GenPage.php">Back</a>';
+      echo '<a href="PHP/CreaPageIT.php">Back</a>';
     }
     
     $conn->close();

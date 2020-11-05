@@ -49,7 +49,7 @@
             <span>
             <h4>Sezioni Wiki</h4>
             <ul class="nav nav-pills nav-stacked" id="searchlist"> 
-                <li class="active"><a href="PHP/CreaPageIT.php">Home</a></li>                                           
+                <li class="active"><a href="PHP/CreaPageIT.php">Home</a></li>                                          
                     <?php
                         require 'PHP/MySQL.php';
             

@@ -8,18 +8,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../CSS/StylePage.css">
     <script src="../../JS/script.js"></script>
-    <title><?php echo $title ?></title>
+    <title>{{title}}</title>
 </head>
 
 <body>
     <div class="jumbotron text-center">
-        <h1><?php echo $title; ?></h1>
-        <p><?php echo $desc; ?></p>
+        <h1>{{title}}</h1>
+        <p>{{desc}}</p>
     </div>
     <div class="col-sm-9 text-centre">
-        <h2><img class="thum" src="<?php echo $thum;?>" alt="<?php echo $thum;?>"><?php echo $par;?></h2>
+        <h2><img class="thum" src="{{thum}}" alt="{{thum}}">{{par}}</h2>
         <p>
-            <img class="full" src="<?php echo $full;?>" alt="<?php echo $full;?>"> <?php echo $text;?>
+            <img class="full" src="{{full}}" alt="{{full}}"> {{text}}
         </p>
     </div>
     <div class="col-sm-3 container-fluid">
@@ -46,7 +46,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <?php
-                        $res = FindLingue($ID);
+                        $res = FindLingue({{ID}});
                         echo $res;
                     ?>
                 </ul>
