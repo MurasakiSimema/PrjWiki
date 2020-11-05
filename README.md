@@ -19,8 +19,11 @@
 * Template
 * Creazione pagine
 * Creazione README .md
+<<<<<<< HEAD
 * Creazione automatica lista pagine
 * Scomparsa vecchia lista di pagine
+=======
+>>>>>>> d21869fba4d5cb42847b2fabb79799cad2ec325f
 =======
 # PrjWiki
 Project Wiki
