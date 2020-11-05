@@ -64,25 +64,25 @@ function FindPage($search){
     $username = "Wiki";
     $password = "password123";
     $dbname = "wiki";
+    $cont = 0;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT Nome, Dir FROM pages WHERE Nome LIKE '$search' LIMIT 5";
+    //$sql = "SELECT Nome, Dir FROM pages WHERE Nome LIKE '$search%' LIMIT 5";
+    $sql = "SELECT Nome, Dir FROM pages";
     $result = $conn->query($sql);
     $ret = "";
     while($row = $result->fetch_assoc()) {
-        $ret = $ret . '<li href = ' . $row["Dir"] . '>' . $row["Nome"] . '</li>';
+        if($cont>5)
+            $ret = $ret . '<li class="nav-item"><a href = ' . $row["Dir"] . '>' . $row["Nome"] . '</a></li>';
+        else
+            $ret = $ret . '<li class="nav-item" style="display: none;"><a href = ' . $row["Dir"] . '>' . $row["Nome"] . '</a></li>';
     }
 
     return $ret;
-    ?>
-    <script>
-
-    </script>
-    <?php
     $conn->close();
 }
 ?>

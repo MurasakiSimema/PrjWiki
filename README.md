@@ -1,9 +1,9 @@
+<<<<<<< HEAD
 # PROGETTO WIKI
 
 ### Cose da fare
-* **Sistemare creazione automatica lista pagine** (in corso)
-* **Creazione eliminazione vecchia lista pagine** (in corso)
 * Creazione link lingue
+* Database Utenze
 * Utente admin per creazione pagine
 * Creazione sistema modifica pagine
 * Creazione pagine
@@ -19,3 +19,9 @@
 * Template
 * Creazione pagine
 * Creazione README .md
+* Creazione automatica lista pagine
+* Scomparsa vecchia lista di pagine
+=======
+# PrjWiki
+Project Wiki
+>>>>>>> 5c57ad58e598949778d39808906726e57bf00e15

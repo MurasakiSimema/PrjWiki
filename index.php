@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="JS/script.js"></script>
     <link rel="stylesheet" href="CSS/StyleIndex.css">
     <title>Brave Frontier RPG</title>
 </head>
 
-<body>
+<body onload="search()">
+
     <div class="jumbotron text-center">
         <h1>Pagina Principale</h1>
         <p>
@@ -42,28 +44,20 @@
     </div>
     <div class="col-sm-3 container-fluid">
         <div class="row content col-sm-10">
-            <form action="Template.php" method="post">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="searchbar" placeholder="Search Blog..">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                    </span>
-                </div>
-                <br>
-                    <span>
-                    <h4>Sezioni Wiki</h4>
-                    <ul class="nav nav-pills nav-stacked"><li class="active"><a href="PHP/CreaPageIT.php">Home</a></li></ul>
-                    <ul class="nav nav-pills nav-stacked" id="searchlist">                        
-                        <li><a href="">Eroi</a></li>
-                        <li><a href="">Esclusive EU</a></li>
-                        <li><a href="">Collab</a></li>
-                        <li><a href="">Mappa</a></li>
-                        <li><a href="">Altro</a></li>
-                    </ul>  
-                    </span> 
-            </form>
+            <input type="text" class="form-control" id="searchbar" placeholder="Search Blog.." onkeyup="search()">
+            <br>
+            <span>
+            <h4>Sezioni Wiki</h4>
+            <ul class="nav nav-pills nav-stacked" id="searchlist"> 
+                <li class="active"><a href="PHP/CreaPageIT.php">Home</a></li>                                           
+                    <?php
+                        require 'PHP/MySQL.php';
+            
+                        $res = FindPage("");
+                        echo $res;
+                    ?>
+                </ul>  
+            </span>
         </div>
     </div>
 </body>
