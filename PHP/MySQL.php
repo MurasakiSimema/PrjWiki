@@ -61,7 +61,7 @@ function ReadLingue(){
     $conn->close();
 }
 
-function FindPage($search){
+function FindPage(){
     $servername = "localhost";
     $username = "Wiki";
     $password = "password123";
@@ -84,7 +84,7 @@ function FindPage($search){
             $ret = $ret . '<li class="nav-item" style="display: none;"><a href = ' . $row["Dir"] . '>' . $row["Nome"] . '</a></li>';
     }
 
-    return $ret;
+    return $ret; 
     $conn->close();
 }
 
@@ -139,11 +139,34 @@ function FindID(){
     }
 
     $sql="SELECT Nome, pages.ID, lingue.Lingua FROM pages LEFT JOIN lingue ON pages.Lingua = lingue.ID";
+    $ret="";
 
     $result = $conn->query($sql);
-    $ret = '<option value = ' . -1 . '>Nuova Pagina</option>';
     while($row = $result->fetch_assoc()) {
         $ret = $ret . '<option value = ' . $row["ID"] . '>' . $row["Nome"] . ', ' . $row["ID"] . ', ' . $row["Lingua"] . '</option>';
+    }
+
+    return $ret;
+    $conn->close();
+}
+
+function FindIDLingua(){
+    $servername = "localhost";
+    $username = "Wiki";
+    $password = "password123";
+    $dbname = "wiki";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql="SELECT Nome, pages.ID, lingue.Lingua, pages.Lingua AS NomeLingua FROM pages LEFT JOIN lingue ON pages.Lingua = lingue.ID";
+    $ret="";
+
+    $result = $conn->query($sql);
+    while($row = $result->fetch_assoc()) {
+        $ret = $ret . '<option value = ' . $row["ID"] . '/' . $row["NomeLingua"] . '>' . $row["Nome"] . ', ' . $row["ID"] . ', ' . $row["Lingua"] . '</option>';
     }
 
     return $ret;
@@ -189,6 +212,24 @@ function FindAdmin($utente, $pass){
 
     $result = $conn->query($sql);
     return $result->num_rows;
+    $conn->close();
+}
+
+function DirFromID($ID, $lingua){
+    $servername = "localhost";
+    $username = "Wiki";
+    $password = "password123";
+    $dbname = "wiki";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT Dir FROM pages WHERE ID = $ID AND Lingua = $lingua";
+    $result = $conn->query($sql);
+
+    return $result->fetch_assoc();
     $conn->close();
 }
 ?>

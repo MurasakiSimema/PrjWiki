@@ -12,7 +12,7 @@ class Template {
     public static function save($data = [], $filename = 'post.php', $lingua) {
         $html = self::parse($data);
         if(!empty($html)) {
-            file_put_contents( $_SERVER['DOCUMENT_ROOT'] . '/PrjWiki/HTML/' . $lingua . '/' . $filename, $html);
+            file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/PrjWiki/HTML/' . $lingua . '/' . $filename, $html);
             InsertPage((int)$_POST["ID"], $_POST["title"], (int)$_POST["lingua"], '/PrjWiki/HTML/' . $lingua . '/' . $filename, $_POST["desc"]);
         }
     }

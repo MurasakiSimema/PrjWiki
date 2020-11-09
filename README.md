@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 # PROGETTO WIKI
 
 ### Cose da fare
-* Creazione sistema modifica pagine
 * Creazione pagine
     * Importazione Immagini
     * Crezione pagine ita
@@ -23,9 +21,5 @@
 * Ricreazione templating
 * Database Utenze
 * Utente admin per creazione pagine
-=======
->>>>>>> d21869fba4d5cb42847b2fabb79799cad2ec325f
-=======
-# PrjWiki
-Project Wiki
->>>>>>> 5c57ad58e598949778d39808906726e57bf00e15
+* Creazione sistema modifica pagine (in corso)
+

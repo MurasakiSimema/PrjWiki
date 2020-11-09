@@ -14,8 +14,10 @@
     <form action="../PHP/GenPage.php" method="post">
         <label>ID:</label>
         <select class="form-control" name="ID">
+            <option value = '-1'>Nuova Pagina</option>
         <?php
             require '../PHP/MySQL.php';
+            
             
             $res1 = FindID();
             echo $res1;
@@ -40,6 +42,7 @@
         <input type="text" class="form-control" name="img" placeholder="Inserire il codice Unit">
         <input type="submit" class="btn btn-danger"/>        
     </form>
+    <a href="../index.php">Back</a>
 </div>
 </body>
 </html>

@@ -7,5 +7,6 @@ $full = "{{full}}";
 $text = "{{text}}";
 $ID = {{ID}};
 
-include '../../PHP/Template.php';
+if(file_exists('../../PHP/Template.php'))
+    include '../../PHP/Template.php';
 ?>

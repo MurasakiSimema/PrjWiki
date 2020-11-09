@@ -55,6 +55,7 @@
                     if(isset($_SESSION["utente"])){                        
                         echo '<li class="active"><a href="ADMIN/Logout.php">Logout</a></li>';
                         echo '<li class="active"><a href="ADMIN/CreaPageIT.php">Crea Pagina</a></li>';
+                        echo '<li class="active"><a href="ADMIN/SelectPage.php">Modifica Pagina</a></li>';
                     }
                     else
                         echo '<li class="active"><a href="HTML/Login.html">Login</a></li>';
