@@ -30,10 +30,10 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
     
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
-      echo '<br><a href="GenPage.php">Back</a>';
+      echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
-      echo '<br><a href="GenPage.php">Back</a>';
+      echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
     }
     
     $conn->close();
@@ -170,5 +170,25 @@ function LastID(){
         $res = 1;
 
     return $res;
+}
+
+function FindAdmin($utente, $pass){
+    $servername = "localhost";
+    $username = "Wiki";
+    $password = "password123";
+    $dbname = "wiki";
+
+    $pass = hash("sha256", $pass, false);
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql="SELECT * FROM utenze WHERE Utente='$utente' AND Password='$pass'";
+
+    $result = $conn->query($sql);
+    return $result->num_rows;
+    $conn->close();
 }
 ?>

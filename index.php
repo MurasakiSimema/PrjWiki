@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+    session_start(); 
+?>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -46,18 +49,23 @@
         <div class="row content col-sm-10">
             <input type="text" class="form-control" id="searchbar" placeholder="Search Blog.." onkeyup="search()">
             <br>
-            <span>
             <h4>Sezioni Wiki</h4>
-            <ul class="nav nav-pills nav-stacked" id="searchlist"> 
-                <li class="active"><a href="PHP/CreaPageIT.php">Home</a></li>                                          
-                    <?php
-                        require 'PHP/MySQL.php';
+            <ul class="nav nav-pills nav-stacked" id="searchlist">                
+                <?php
+                    if(isset($_SESSION["utente"])){                        
+                        echo '<li class="active"><a href="ADMIN/Logout.php">Logout</a></li>';
+                        echo '<li class="active"><a href="ADMIN/CreaPageIT.php">Crea Pagina</a></li>';
+                    }
+                    else
+                        echo '<li class="active"><a href="HTML/Login.html">Login</a></li>';
+                    
+                    
+                    require 'PHP/MySQL.php';
             
-                        $res = FindPage("");
-                        echo $res;
-                    ?>
-                </ul>  
-            </span>
+                    $res = FindPage("");
+                    echo $res;
+                ?>
+            </ul>
         </div>
     </div>
 </body>

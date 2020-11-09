@@ -2,8 +2,6 @@
 # PROGETTO WIKI
 
 ### Cose da fare
-* Database Utenze
-* Utente admin per creazione pagine
 * Creazione sistema modifica pagine
 * Creazione pagine
     * Importazione Immagini
@@ -22,6 +20,9 @@
 * Creazione automatica lista pagine
 * Scomparsa vecchia lista di pagine
 * Creazione link lingue
+* Ricreazione templating
+* Database Utenze
+* Utente admin per creazione pagine
 =======
 >>>>>>> d21869fba4d5cb42847b2fabb79799cad2ec325f
 =======

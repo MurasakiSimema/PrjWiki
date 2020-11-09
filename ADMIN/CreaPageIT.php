@@ -11,11 +11,11 @@
 </head>
 <body>
 <div class="form-group">
-    <form action="GenPage.php" method="post">
+    <form action="../PHP/GenPage.php" method="post">
         <label>ID:</label>
         <select class="form-control" name="ID">
         <?php
-            require 'MySQL.php';
+            require '../PHP/MySQL.php';
             
             $res1 = FindID();
             echo $res1;
@@ -32,14 +32,13 @@
         </select>
         <label>Descrizione:</label>
         <textarea class="form-control" rows="5" name="desc" placeholder="Inserire la Descrizione"></textarea>
-        <label>Paragrafp:</label>
+        <label>Paragrafo:</label>
         <input type="text" class="form-control" name="par" placeholder="Inserire il titolo del Paragrafo">
         <label>Testo:</label>
         <textarea class="form-control" rows="10" name="text" placeholder="Inserire il Testo"></textarea>
         <label>Codice Unità</label>
         <input type="text" class="form-control" name="img" placeholder="Inserire il codice Unit">
-        <input type="submit" class="btn btn-danger"/>
-        
+        <input type="submit" class="btn btn-danger"/>        
     </form>
 </div>
 </body>
