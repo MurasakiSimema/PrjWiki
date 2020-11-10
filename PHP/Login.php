@@ -11,7 +11,7 @@ $password = $_POST["password"];
 $result=FindAdmin($utente, $password);
 
 
-if($result==1){
+if($result!=0){
     session_start();
     $_SESSION['utente'] = $utente;
     $_SESSION['password'] = $password;

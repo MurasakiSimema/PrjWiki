@@ -42,7 +42,7 @@
         <input type="text" class="form-control" name="img" placeholder="Inserire il codice Unit">
         <input type="submit" class="btn btn-danger"/>        
     </form>
-    <a href="../index.php">Back</a>
+    <button class="btn"><a href="../index.php">Back</a></button>
 </div>
 </body>
 </html>

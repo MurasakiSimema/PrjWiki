@@ -31,9 +31,11 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
     if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
       echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
+      return true;
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
       echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
+      return false;
     }
     
     $conn->close();
@@ -74,14 +76,14 @@ function FindPage(){
     }
 
     //$sql = "SELECT Nome, Dir FROM pages WHERE Nome LIKE '$search%' LIMIT 5";
-    $sql = "SELECT Nome, Dir FROM pages";
+    $sql = "SELECT Nome, Dir, lingue.Lingua FROM pages INNER JOIN lingue ON pages.Lingua = lingue.ID";
     $result = $conn->query($sql);
     $ret = "";
     while($row = $result->fetch_assoc()) {
         if($cont>5)
-            $ret = $ret . '<li class="nav-item"><a href = ' . $row["Dir"] . '>' . $row["Nome"] . '</a></li>';
+            $ret = $ret . '<li class="nav-item"><a href = ' . $row["Dir"] . '>' . $row["Nome"] . ' - ' . $row["Lingua"] . '</a></li>';
         else
-            $ret = $ret . '<li class="nav-item" style="display: none;"><a href = ' . $row["Dir"] . '>' . $row["Nome"] . '</a></li>';
+            $ret = $ret . '<li class="nav-item" style="display: none;"><a href = ' . $row["Dir"] . '>' . $row["Nome"] . ' - ' . $row["Lingua"] . '</a></li>';
     }
 
     return $ret; 
@@ -230,6 +232,31 @@ function DirFromID($ID, $lingua){
     $result = $conn->query($sql);
 
     return $result->fetch_assoc();
+    $conn->close();
+}
+
+function InsertAdmin($user, $pass){
+    $servername = "localhost";
+    $username = "Wiki";
+    $password = "password123";
+    $dbname = "wiki";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $pass=hash("sha256", $pass, false);
+    $sql = "INSERT INTO utenze (Utente, Password)
+    VALUES ('$user', '$pass')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        echo '<br><a href="../ADMIN/CreaAdmin.php">Back</a>';
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo '<br><a href="../ADMIN/CreaAdmin.php">Back</a>';
+    }
     $conn->close();
 }
 ?>

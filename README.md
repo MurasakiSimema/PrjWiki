@@ -1,6 +1,8 @@
 # PROGETTO WIKI
 
 ### Cose da fare
+* Creazione utenti
+* Aggiungere controlli Inserisci/Modifica
 * URL rewriting
 * Creazione pagine
     * Importazione Immagini
