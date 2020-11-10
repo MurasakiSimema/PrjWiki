@@ -1,6 +1,7 @@
 # PROGETTO WIKI
 
 ### Cose da fare
+* URL rewriting
 * Creazione pagine
     * Importazione Immagini
     * Crezione pagine ita
@@ -21,5 +22,5 @@
 * Ricreazione templating
 * Database Utenze
 * Utente admin per creazione pagine
-* Creazione sistema modifica pagine (in corso)
+* Creazione sistema modifica pagine
 
