@@ -20,4 +20,6 @@ class Template {
 $data=array($_POST["title"], $_POST["desc"], $_POST["par"], $_POST["text"], "../../IMG/Unit_ills_thum_" . $_POST["img"] . ".png", "../../IMG/Unit_ills_full_" . $_POST["img"] . ".png", $_POST["ID"]);   
 
 Template::save($data, "$data[0].php", LinguaFromID((int)$_POST["lingua"]));
+
+echo '<br><a href="../ADMIN/SelectPage.php">Back</a>';
 ?>

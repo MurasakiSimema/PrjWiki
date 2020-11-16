@@ -22,7 +22,7 @@
         <label>Descrizione:</label>
         <textarea class="form-control" rows="5" name="desc" placeholder="Inserire la Descrizione"><?php echo $desc; ?></textarea>
         <label>Paragrafo:</label>
-        <input type="text" class="form-control" name="par" placeholder="Inserire il titolo del Paragrafo" value=<?php echo $par; ?>>
+        <input type="text" class="form-control" name="par" placeholder="Inserire il titolo del Paragrafo" value='<?php echo $par; ?>'>
         <label>Testo:</label>
         <textarea class="form-control" rows="10" name="text" placeholder="Inserire il Testo"><?php echo $text; ?></textarea>
         <label>Codice Unità</label>
