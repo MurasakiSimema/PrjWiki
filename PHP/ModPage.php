@@ -2,6 +2,12 @@
     $date = explode("/", $_POST["ID"]);
     require '../PHP/MySQL.php';
     require '../..' . DirFromID($date[0], $date[1])["Dir"];
+
+    $text = str_replace("</b>", "|***", str_replace("<b>", "***|", $text));
+    $text = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $text));
+
+    $desc = str_replace("</b>", "|***", str_replace("<b>", "***|", $desc));
+    $desc = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $desc));
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,9 +1,7 @@
 # PROGETTO WIKI
 
 ### Cose da fare
-* Creazione utenti
 * Aggiungere controlli Inserisci/Modifica
-* URL rewriting
 * Creazione pagine
     * Importazione Immagini
     * Crezione pagine ita
@@ -17,7 +15,6 @@
 * Template
 * Creazione pagine
 * Creazione README .md
-<<<<<<< HEAD
 * Creazione automatica lista pagine
 * Scomparsa vecchia lista di pagine
 * Creazione link lingue
@@ -25,4 +22,5 @@
 * Database Utenze
 * Utente admin per creazione pagine
 * Creazione sistema modifica pagine
+* Parte facoltativa
 
