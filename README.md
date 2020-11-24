@@ -1,7 +1,6 @@
 # PROGETTO WIKI
 
 ### Cose da fare
-* Aggiungere controlli Inserisci/Modifica
 * Creazione pagine
     * Importazione Immagini
     * Crezione pagine ita
@@ -23,4 +22,4 @@
 * Utente admin per creazione pagine
 * Creazione sistema modifica pagine
 * Parte facoltativa
-
+* Aggiungere controlli Inserisci/Modifica

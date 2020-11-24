@@ -5,6 +5,7 @@
 
     $text = str_replace("</b>", "|***", str_replace("<b>", "***|", $text));
     $text = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $text));
+    $text = str_replace("<br>", "\n", $text);
 
     $desc = str_replace("</b>", "|***", str_replace("<b>", "***|", $desc));
     $desc = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $desc));

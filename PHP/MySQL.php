@@ -10,6 +10,8 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
         die("Connection failed: " . $conn->connect_error);
     }
 
+    
+    $descrizione = str_replace("'","\'", $descrizione);
     if($ID!=-1){
     $sql = "INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione)
     VALUES ($lingua, $ID, '$title', '$dir', '$descrizione')";
@@ -29,13 +31,14 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
     }
     
     if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
-      echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
-      return true;
+        echo "<br>Pagina creata con successo<br>";
+        echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
+        return true;
     } else {
-      echo "Error: " . $sql . "<br>" . $conn->error;
-      echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
-      return false;
+        echo "<br>Errore nella creazione della pagina<br>";
+        echo "<br>Error: " . $sql . "<br>" . $conn->error;
+        echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
+        return false;
     }
     
     $conn->close();
@@ -106,6 +109,27 @@ function FindLingue($id){
     $ret = "";
     while($row = $result->fetch_assoc()){
         $ret = $ret . '<li><a href="' . $row["Dir"] . '">' . $row["Lingua"] . '</a></li>';
+    }
+    return $ret;
+    $conn->close();
+}
+
+function FindLingueInternal($id){
+    $servername = "localhost";
+    $username = "Wiki";
+    $password = "password123";
+    $dbname = "wiki";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT Dir, lingue.Lingua FROM lingue INNER JOIN pages ON pages.Lingua = lingue.ID WHERE pages.ID = $id";
+    $result = $conn->query($sql);
+    $ret = "";
+    while($row = $result->fetch_assoc()){
+        $ret = $ret . $row["Lingua"] . ', ';
     }
     return $ret;
     $conn->close();
@@ -251,10 +275,11 @@ function InsertAdmin($user, $pass){
     VALUES ('$user', '$pass')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        echo "<br>Pagina Modificata con successo<br>";
         echo '<br><a href="../ADMIN/CreaAdmin.php">Back</a>';
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "<br>Errore nella modifica della pagina<br>";
+        echo "<br>Error: " . $sql . "<br>" . $conn->error;
         echo '<br><a href="../ADMIN/CreaAdmin.php">Back</a>';
     }
     $conn->close();

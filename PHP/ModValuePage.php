@@ -18,10 +18,13 @@ class Template {
 }
 
 $text = $_POST["text"];
+$text = str_replace('"','\"', $text);
+$text = str_replace("\n", "<br>", $text);
 $text = str_replace("|***", "</b>", str_replace("***|", "<b>", $text));
 $text = str_replace("|**", "</mark>", str_replace("**|", "<mark>", $text));
 
 $des = $_POST["desc"];
+$des = str_replace('"','\"', $des);
 $des = str_replace("|***", "</b>", str_replace("***|", "<b>", $des));
 $des = str_replace("|**", "</mark>", str_replace("**|", "<mark>", $des));
 
