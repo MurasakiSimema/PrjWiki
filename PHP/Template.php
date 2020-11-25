@@ -32,7 +32,7 @@
             <span>
             <h4>Sezioni Wiki</h4>
             <ul class="nav nav-pills nav-stacked" id="searchlist"> 
-                <li class="active"><a href="../../index.php">Home</a></li>                                           
+                <li class="active"><a href="../../Home">Home</a></li>                                           
                     <?php
                         if(isset($_SESSION["utente"])){                        
                             echo '<li class="active"><a href="../../ADMIN/Logout.php">Logout</a></li>';
@@ -40,7 +40,7 @@
                             echo '<li class="active"><a href="../../ADMIN/SelectPage.php">Modifica Pagina</a></li>';
                         }
                         else
-                            echo '<li class="active"><a href="../Login.html">Login</a></li>';
+                            echo '<li class="active"><a href="../ADMIN/Login.php">Login</a></li>';
                             
                         require '../../PHP/MySQL.php';
             

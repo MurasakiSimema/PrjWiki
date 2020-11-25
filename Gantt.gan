@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2020-11-05" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.10" locale="it_IT">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2020-10-29" view-index="0" gantt-divider-location="439" resource-divider-location="300" version="2.8.11" locale="it">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
-        <field id="tpd3" name="Nome" width="167" order="0"/>
-        <field id="tpd4" name="Data d'inizio" width="65" order="1"/>
-        <field id="tpd5" name="Data di fine" width="64" order="2"/>
+        <field id="tpd3" name="Nome" width="258" order="0"/>
+        <field id="tpd4" name="Data d'inizio" width="66" order="1"/>
+        <field id="tpd5" name="Data di fine" width="111" order="2"/>
+        <option id="color.recent"><![CDATA[#33cc00 #ff0000 #000000 #ccffff]]></option>
     </view>
     <view id="resource-table">
         <field id="0" name="Nome" width="210" order="0"/>
@@ -33,30 +34,48 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Creazione Specifiche" color="#8cb6ce" meeting="false" start="2020-10-29" duration="2" complete="0" thirdDate="2020-10-28" thirdDate-constraint="0" expand="true">
-            <depend id="6" type="2" difference="0" hardness="Strong"/>
-            <depend id="10" type="2" difference="0" hardness="Strong"/>
+        <task id="0" name="Creazione Specifiche" color="#8cb6ce" meeting="false" start="2020-10-29" duration="1" complete="0" thirdDate="2020-10-28" thirdDate-constraint="0" expand="true">
+            <depend id="79" type="2" difference="0" hardness="Strong"/>
+            <depend id="80" type="2" difference="0" hardness="Strong"/>
+            <task id="102" name="Creazione Documentazione" color="#8cb6ce" meeting="false" start="2020-10-29" duration="1" complete="0" thirdDate="2020-12-01" thirdDate-constraint="0" expand="true"/>
+            <task id="111" name="Progettazione" color="#8cb6ce" meeting="false" start="2020-10-29" duration="1" complete="0" thirdDate="2020-10-28" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="6" name="Creazione DB" color="#8cb6ce" meeting="false" start="2020-11-02" duration="1" complete="0" thirdDate="2020-10-27" thirdDate-constraint="0" expand="true">
-            <depend id="22" type="2" difference="0" hardness="Strong"/>
+        <task id="78" name="Creazione base del sito" meeting="false" start="2020-10-30" duration="4" complete="0" expand="true">
+            <task id="79" name="Creazione DB lingue e pages" color="#000000" meeting="false" start="2020-10-30" duration="1" complete="0" thirdDate="2020-10-27" thirdDate-constraint="0" expand="true">
+                <depend id="99" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="80" name="Creazione Scheletro Sito" color="#000000" meeting="false" start="2020-10-30" duration="1" complete="0" thirdDate="2020-10-27" thirdDate-constraint="0" expand="true">
+                <depend id="98" type="2" difference="0" hardness="Strong"/>
+                <depend id="99" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="97" name="Creazoni funzioni" color="#000000" meeting="false" start="2020-11-02" duration="2" complete="0" thirdDate="2020-11-02" thirdDate-constraint="0" expand="true">
+                <task id="98" name="Creazione link per le lingue" color="#000000" meeting="false" start="2020-11-02" duration="1" complete="0" thirdDate="2020-11-06" thirdDate-constraint="0" expand="true">
+                    <depend id="81" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="99" name="Creazione lista pagine per ricerca" color="#000000" meeting="false" start="2020-11-02" duration="2" complete="0" thirdDate="2020-11-10" thirdDate-constraint="0" expand="true">
+                    <depend id="81" type="2" difference="0" hardness="Strong"/>
+                    <depend id="86" type="2" difference="0" hardness="Strong"/>
+                    <depend id="89" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="81" name="Creazione Template" color="#000000" meeting="false" start="2020-11-04" duration="1" complete="0" thirdDate="2020-11-10" thirdDate-constraint="0" expand="true">
+                <depend id="85" type="2" difference="0" hardness="Strong"/>
+            </task>
         </task>
-        <task id="10" name="Creazione Scheletro Sito" color="#8cb6ce" meeting="false" start="2020-11-02" duration="1" complete="0" thirdDate="2020-10-27" thirdDate-constraint="0" expand="true">
-            <depend id="22" type="2" difference="0" hardness="Strong"/>
-            <depend id="29" type="2" difference="0" hardness="Strong"/>
+        <task id="84" name="Creazione Parte Admin" color="#ff0000" meeting="false" start="2020-11-04" duration="14" complete="0" thirdDate="2020-11-04" thirdDate-constraint="0" expand="true">
+            <task id="85" name="Creazione Utenze Admin e funzione Login" color="#ff0000" meeting="false" start="2020-11-05" duration="1" complete="0" thirdDate="2020-11-06" thirdDate-constraint="0" expand="true"/>
+            <task id="89" name="Creazione Sistema crea pagine" color="#ff0000" meeting="false" start="2020-11-04" duration="5" complete="0" thirdDate="2020-11-05" thirdDate-constraint="0" expand="true"/>
+            <task id="86" name="Creazione Sistema modifca pagine" color="#ff0000" meeting="false" start="2020-11-04" duration="5" complete="0" thirdDate="2020-11-05" thirdDate-constraint="0" expand="true"/>
+            <task id="87" name="Controlli Inserisci\Modifica" color="#ff0000" meeting="false" start="2020-11-11" duration="9" complete="0" thirdDate="2020-11-12" thirdDate-constraint="0" expand="true">
+                <depend id="92" type="2" difference="0" hardness="Strong"/>
+            </task>
         </task>
-        <task id="29" name="Creazione link per le lingue" color="#8cb6ce" meeting="false" start="2020-11-03" duration="1" complete="0" thirdDate="2020-11-06" thirdDate-constraint="0" expand="true">
-            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        <task id="67" name="Testing" color="#33cc00" meeting="false" start="2020-11-24" duration="4" complete="0" thirdDate="2020-11-26" thirdDate-constraint="0" expand="true">
+            <task id="92" name="Creazione record per db" color="#33cc00" meeting="false" start="2020-11-24" duration="1" complete="0" thirdDate="2020-11-24" thirdDate-constraint="0" expand="true">
+                <depend id="94" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="94" name="Prova installazione su altra macchina" color="#33cc00" meeting="false" start="2020-11-25" duration="3" complete="0" thirdDate="2020-10-28" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="22" name="Creazione lista pagine per ricerca" color="#8cb6ce" meeting="false" start="2020-11-03" duration="2" complete="0" thirdDate="2020-11-10" thirdDate-constraint="0" expand="true">
-            <depend id="12" type="2" difference="0" hardness="Strong"/>
-            <depend id="58" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="12" name="Creazione Template" color="#8cb6ce" meeting="false" start="2020-11-05" duration="1" complete="0" thirdDate="2020-11-10" thirdDate-constraint="0" expand="true">
-            <depend id="53" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="53" name="Creazione Utenze Admin" color="#8cb6ce" meeting="false" start="2020-11-06" duration="1" complete="0" thirdDate="2020-11-06" thirdDate-constraint="0" expand="true"/>
-        <task id="58" name="Creazione Sistema modifca pagine" color="#8cb6ce" meeting="false" start="2020-11-05" duration="5" complete="0" thirdDate="2020-11-05" thirdDate-constraint="0" expand="true"/>
-        <task id="62" name="Controlli Inserisci\Modifica" color="#8cb6ce" meeting="false" start="2020-11-12" duration="9" complete="0" thirdDate="2020-11-12" thirdDate-constraint="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>

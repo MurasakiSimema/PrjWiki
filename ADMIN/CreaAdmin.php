@@ -20,7 +20,7 @@
             <input type="password" class="form-control" name="confirm" placeholder="Reinserire Password">  
             <input type="submit" class="btn btn-danger">  
         </form>
-        <button class="btn"><a href="../index.php">Back</a></button>
+        <button class="btn"><a href="../Home">Back</a></button>
     </div>
 </body>
 </html>

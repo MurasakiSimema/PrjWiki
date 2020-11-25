@@ -57,11 +57,10 @@
                         echo '<li class="active"><a href="ADMIN/CreaPageIT.php">Crea Pagina</a></li>';
                         echo '<li class="active"><a href="ADMIN/SelectPage.php">Modifica Pagina</a></li>';
                         echo '<li class="active"><a href="ADMIN/CreaAdmin.php">Aggiungi Utente</a></li>';
-                        /*echo '<li class="active"><a href="PHP/GeneraRandom.php">Random</a></li>';*/
+                        /*echo '<li class="active"><a href="PHP/GeneraRandom.php">Random</a></li>';*/      
                     }
                     else
-                        echo '<li class="active"><a href="HTML/Login.html">Login</a></li>';
-                    
+                        echo '<li class="active"><a href="ADMIN/Login.php">Login</a></li>';
                     
                     require 'PHP/MySQL.php';
             
@@ -70,9 +69,6 @@
                 ?>
             </ul>
         </div>
-        <!--<div class="row content col-sm-10">
-            <iframe src="https://discord.com/widget?id=689548302630649951&theme=dark" width="100%" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-        </div>-->
     </div>
 </body>
 </html>

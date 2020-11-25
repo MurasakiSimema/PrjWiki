@@ -15,7 +15,7 @@ if($result!=0){
     session_start();
     $_SESSION['utente'] = $utente;
     $_SESSION['password'] = $password;
-    header("Location: ../index.php");
+    header("Location: ../Home");
 }
 else {
     echo "Identificazione non riuscita: nome utente o password errati <br />";

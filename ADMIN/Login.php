@@ -21,7 +21,7 @@
             <input type="password" class="form-control" name="password" size="40" /><br>
             <input type="submit" class="btn btn-danger">
         </form>
-        <button class="btn"><a href="../index.php">Back</a></button>
+        <button class="btn"><a href="../Home">Back</a></button>
     </div>
 </body>
 

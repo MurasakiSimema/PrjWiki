@@ -1,11 +1,7 @@
 # PROGETTO WIKI
+## Come installare
 
 ### Cose da fare
-* Creazione pagine
-    * Importazione Immagini
-    * Crezione pagine ita
-    * Creazione pagine eng
-    * Creazione pagine brutte
 
 #### Cose fatte
 * Database pagine
@@ -23,3 +19,8 @@
 * Creazione sistema modifica pagine
 * Parte facoltativa
 * Aggiungere controlli Inserisci/Modifica
+* Creazione pagine
+    * Importazione Immagini
+    * Crezione pagine ita
+    * Creazione pagine eng
+    * Creazione pagine brutte
