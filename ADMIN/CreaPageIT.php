@@ -10,7 +10,7 @@
     <title>Home</title>
 </head>
 <body>
-<div class="form-group">
+<div class="form-group container-fluid">
     <form action="../PHP/GenPage.php" method="post">
         <label>ID:</label>
         <select class="form-control" name="ID" id="id" onchange="ControlloLingua()">
@@ -33,15 +33,16 @@
         ?>
         </select>
         <label>Descrizione:</label>
-        <textarea class="form-control" rows="5" name="desc" placeholder="Inserire la Descrizione"></textarea>
+        <textarea class="form-control" rows="5" name="desc" placeholder="Inserire la Descrizione" resize="none"></textarea>
         <label>Paragrafo:</label>
         <input type="text" class="form-control" name="par" placeholder="Inserire il titolo del Paragrafo">
         <label>Testo:</label>
-        <textarea class="form-control" rows="10" name="text" placeholder="Inserire il Testo"></textarea>
+        <textarea class="form-control" rows="18" name="text" placeholder="Inserire il Testo"></textarea>
         <label>Codice Unità</label>
         <input type="text" class="form-control" name="img" placeholder="Inserire il codice Unit">
         <input type="submit" class="btn btn-danger" id="btn"/>        
     </form>
+    <br>
     <button class="btn"><a href="../index.php">Back</a></button>
 </div>
 </body>

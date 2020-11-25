@@ -10,7 +10,7 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="form-group">
+    <div class="form-group container-fluid">
         <form action="../PHP/GenAdmin.php" method="post">
             <label>Utente:</label>
             <input type="text" class="form-control" name="utente" placeholder="Inserire Utente">

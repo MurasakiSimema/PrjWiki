@@ -22,22 +22,24 @@
     <title>Home</title>
 </head>
 <body>
-<div class="form-group">
+<div class="form-group container-fluid">
     <form action="ModValuePage.php" method="post">
         <label>Titolo:</label>
         <textarea readonly type="text" class="form-control" name="title" rows="1"><?php echo $title; ?></textarea>
         <label>Descrizione:</label>
-        <textarea class="form-control" rows="5" name="desc" placeholder="Inserire la Descrizione"><?php echo $desc; ?></textarea>
+        <textarea class="form-control" rows="5" name="desc" placeholder="Inserire la Descrizione" resize="none"><?php echo $desc; ?></textarea>
         <label>Paragrafo:</label>
         <input type="text" class="form-control" name="par" placeholder="Inserire il titolo del Paragrafo" value='<?php echo $par; ?>'>
         <label>Testo:</label>
-        <textarea class="form-control" rows="10" name="text" placeholder="Inserire il Testo"><?php echo $text; ?></textarea>
+        <textarea class="form-control" rows="20" name="text" placeholder="Inserire il Testo"  resize="none"><?php echo $text; ?></textarea>
         <label>Codice Unità</label>
         <input type="text" class="form-control" name="img" placeholder="Inserire il codice Unit" value=<?php echo explode(".", explode("thum_", $thum)[1])[0]; ?>>
-        <textarea readonly type="text" class="form-control invisible" name="ID" rows="1"><?php echo $date[0]; ?></textarea>
-        <textarea readonly type="text" class="form-control invisible" name="lingua" rows="1"><?php echo $date[1]; ?></textarea>
+        <textarea readonly type="text" class="form-control" style="display:none" name="ID" rows="1"><?php echo $date[0]; ?></textarea>
+        <textarea readonly type="text" class="form-control" style="display:none" name="lingua" rows="1"><?php echo $date[1]; ?></textarea>
         <input type="submit" class="btn btn-danger"/>        
     </form>
+    <br>
+    <button class="btn"><a href="../index.php">Back</a></button>
 </div>
 </body>
 </html>
