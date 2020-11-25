@@ -57,6 +57,7 @@
                         echo '<li class="active"><a href="ADMIN/CreaPageIT.php">Crea Pagina</a></li>';
                         echo '<li class="active"><a href="ADMIN/SelectPage.php">Modifica Pagina</a></li>';
                         echo '<li class="active"><a href="ADMIN/CreaAdmin.php">Aggiungi Utente</a></li>';
+                        /*echo '<li class="active"><a href="PHP/GeneraRandom.php">Random</a></li>';*/
                     }
                     else
                         echo '<li class="active"><a href="HTML/Login.html">Login</a></li>';
