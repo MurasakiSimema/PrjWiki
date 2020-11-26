@@ -79,14 +79,14 @@ function FindPage(){
     }
 
     //$sql = "SELECT Nome, Dir FROM pages WHERE Nome LIKE '$search%' LIMIT 5";
-    $sql = "SELECT Nome, Dir, lingue.Lingua FROM pages INNER JOIN lingue ON pages.Lingua = lingue.ID";
+    $sql = "SELECT Nome, Dir, lingue.Lingua, Descrizione FROM pages INNER JOIN lingue ON pages.Lingua = lingue.ID";
     $result = $conn->query($sql);
     $ret = "";
     while($row = $result->fetch_assoc()) {
         if($cont>5)
-            $ret = $ret . '<li class="nav-item"><a href = ' . $row["Dir"] . '>' . $row["Nome"] . ' - ' . $row["Lingua"] . '</a></li>';
+            $ret = $ret . '<li class="nav-item"><a href = ' . $row["Dir"] . ' title = "' . $row["Descrizione"] . '">' . $row["Nome"] . ' - ' . $row["Lingua"] . '</a></li>';
         else
-            $ret = $ret . '<li class="nav-item" style="display: none;"><a href = ' . $row["Dir"] . '>' . $row["Nome"] . ' - ' . $row["Lingua"] . '</a></li>';
+            $ret = $ret . '<li class="nav-item" style="display: none;"><a href = ' . $row["Dir"] . ' title = "' . $row["Descrizione"] . '">' . $row["Nome"] . ' - ' . $row["Lingua"] . '</a></li>';
     }
 
     return $ret; 

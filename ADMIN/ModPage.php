@@ -23,7 +23,7 @@
 </head>
 <body>
 <div class="form-group container-fluid">
-    <form action="ModValuePage.php" method="post">
+    <form action="../PHP/ModValuePage.php" method="post">
         <label>Titolo:</label>
         <textarea readonly type="text" class="form-control" name="title" rows="1"><?php echo $title; ?></textarea>
         <label>Descrizione:</label>

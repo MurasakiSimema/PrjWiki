@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="form-group">
-    <form action="../PHP/ModPage.php" method="post">
+    <form action="ModPage.php" method="post">
         <label>ID:</label>
         <select class="form-control" name="ID">
         <?php

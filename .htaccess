@@ -1,5 +1,5 @@
 RewriteEngine on
 
-RewriteRule ^BraveFrontierWiki/([a-zA-Z_0-9]+)/([a-zA-Z]+)$ HTML/$2/$1.php [L]
+RewriteRule ^BraveFrontierWiki/([a-zA-Z_0-9]+)/([a-zA-Z]+)$ PAGINE/$2/$1.php [L]
 
 RewriteRule ^Home$ index.php

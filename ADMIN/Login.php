@@ -14,7 +14,7 @@
 <body>
     <div class="container-fluid">
         <h2>Login</h2>
-        <form action="../PHP/Login.php" method="post">
+        <form action="../PHP/ControllaLogin.php" method="post">
             <label>Utente:</label>
             <input type="text" class="form-control" name="utente" size="40">
             <label>Password:</label>

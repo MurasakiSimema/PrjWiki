@@ -1,7 +1,9 @@
 # PROGETTO WIKI
 ## Come installare
 
+
 ### Cose da fare
+* Niente U.U
 
 #### Cose fatte
 * Database pagine
