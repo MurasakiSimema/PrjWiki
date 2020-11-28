@@ -1,9 +1,11 @@
 <?php
-function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
     $servername = "localhost";
     $username = "Wiki";
     $password = "password123";
     $dbname = "wiki";
+
+function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -45,10 +47,7 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
 }
 
 function ReadLingue(){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -67,10 +66,7 @@ function ReadLingue(){
 }
 
 function FindPage(){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
     $cont = 0;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -94,10 +90,7 @@ function FindPage(){
 }
 
 function FindLingue($id){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -115,10 +108,7 @@ function FindLingue($id){
 }
 
 function FindLingueInternal($id){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -136,10 +126,7 @@ function FindLingueInternal($id){
 }
 
 function LinguaFromID($id){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -154,10 +141,7 @@ function LinguaFromID($id){
 }
 
 function FindID(){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -177,10 +161,7 @@ function FindID(){
 }
 
 function FindIDLingua(){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -200,10 +181,7 @@ function FindIDLingua(){
 }
 
 function LastID(){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -222,10 +200,7 @@ function LastID(){
 }
 
 function FindAdmin($utente, $pass){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $pass = hash("sha256", $pass, false);
 
@@ -242,10 +217,7 @@ function FindAdmin($utente, $pass){
 }
 
 function DirFromID($ID, $lingua){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -260,10 +232,7 @@ function DirFromID($ID, $lingua){
 }
 
 function InsertAdmin($user, $pass){
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+    global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
