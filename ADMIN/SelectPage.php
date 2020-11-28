@@ -10,7 +10,7 @@
     <title>Home</title>
 </head>
 <body>
-<div class="form-group">
+<div class="form-group container-fluid">
     <form action="ModPage.php" method="post">
         <label>ID:</label>
         <select class="form-control" name="ID">

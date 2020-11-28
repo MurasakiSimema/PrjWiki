@@ -4,7 +4,7 @@
     $password = "password123";
     $dbname = "wiki";
 
-function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
+function InsertPage($ID, $title, $lingua, $dir, $descrizione="", $truedir){
     global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -15,20 +15,20 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione=""){
     
     $descrizione = str_replace("'","\'", $descrizione);
     if($ID!=-1){
-    $sql = "INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione)
-    VALUES ($lingua, $ID, '$title', '$dir', '$descrizione')";
+    $sql = "INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione, TrueDir)
+    VALUES ($lingua, $ID, '$title', '$dir', '$descrizione', '$truedir')";
     }
     else{
         $result = $conn->query("SELECT MAX(ID) AS MAXID FROM pages");
         $row = $result->fetch_assoc();
         if($row['MAXID']!=null){
-            $row['MAXID']++;
-            $sql = 'INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione)
-            VALUES (' . $lingua . ', ' . $row["MAXID"] . ', "' . $title . '", "' . $dir . '", "' . $descrizione . '")'; 
+            $newid = $row['MAXID']++;
+            $sql = "INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione, TrueDir) 
+            VALUES ($lingua, $newid, '$title', '$dir', '$descrizione', '$truedir')";
         }
         else{
-            $sql = 'INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione)
-            VALUES (' . $lingua . ', 1, "' . $title . '", "' . $dir . '", "' . $descrizione . '")'; 
+            $sql = 'INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione, TrueDir)
+            VALUES (' . $lingua . ', 1, "' . $title . '", "' . $dir . '", "' . $descrizione . '", "' . $truedir .')'; 
         }
     }
     
@@ -224,7 +224,7 @@ function DirFromID($ID, $lingua){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT Dir FROM pages WHERE ID = $ID AND Lingua = $lingua";
+    $sql = "SELECT TrueDir FROM pages WHERE ID = $ID AND Lingua = $lingua";
     $result = $conn->query($sql);
 
     return $result->fetch_assoc();

@@ -40,10 +40,10 @@
         <textarea class="form-control" rows="18" name="text" placeholder="Inserire il Testo"></textarea>
         <label>Codice Unità</label>
         <input type="text" class="form-control" name="img" placeholder="Inserire il codice Unit">
-        <input type="submit" class="btn btn-danger" id="btn"/>        
+        <br>
+        <button type="submit" class="btn btn-danger" id="btn">Crea <span class="glyphicon glyphicon-check"></span></button>   
+        <button class="btn"><a href="../Home">Back <span class="glyphicon glyphicon-home"></span></a></button>     
     </form>
-    <br>
-    <button class="btn"><a href="../Home">Back</a></button>
 </div>
 </body>
 </html>

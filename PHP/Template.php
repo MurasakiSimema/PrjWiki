@@ -35,12 +35,14 @@
                 <li class="active"><a href="../../Home">Home</a></li>                                           
                     <?php
                         if(isset($_SESSION["utente"])){                        
-                            echo '<li class="active"><a href="../../ADMIN/Logout.php">Logout</a></li>';
-                            echo '<li class="active"><a href="../../ADMIN/CreaPageIT.php">Crea Pagina</a></li>';
-                            echo '<li class="active"><a href="../../ADMIN/SelectPage.php">Modifica Pagina</a></li>';
+                            echo '<li class="active"><a href="ADMIN/Logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';
+                            echo '<li class="active"><a href="ADMIN/CreaPageIT.php"><span class="glyphicon glyphicon-new-window"></span> Crea Pagina</a></li>';
+                            echo '<li class="active"><a href="ADMIN/SelectPage.php"><span class="glyphicon glyphicon-pencil"></span> Modifica Pagina</a></li>';
+                            echo '<li class="active"><a href="ADMIN/CreaAdmin.php"><span class="glyphicon glyphicon-user"></span> Aggiungi Utente</a></li>';
+                            /*echo '<li class="active"><a href="PHP/GeneraRandom.php">Random</a></li>';*/      
                         }
                         else
-                            echo '<li class="active"><a href="../ADMIN/Login.php">Login</a></li>';
+                            echo '<li class="active"><a href="ADMIN/Login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
                             
                         require '../../PHP/MySQL.php';
             

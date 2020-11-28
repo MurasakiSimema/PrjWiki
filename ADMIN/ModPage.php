@@ -1,7 +1,8 @@
 <?php
     $date = explode("/", $_POST["ID"]);
     require '../PHP/MySQL.php';
-    require '../..' . DirFromID($date[0], $date[1])["Dir"];
+    $dir = DirFromID($date[0], $date[1])["TrueDir"];
+    require '../..' . $dir;
 
     $text = str_replace("</b>", "|***", str_replace("<b>", "***|", $text));
     $text = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $text));
@@ -36,10 +37,10 @@
         <input type="text" class="form-control" name="img" placeholder="Inserire il codice Unit" value=<?php echo explode(".", explode("thum_", $thum)[1])[0]; ?>>
         <textarea readonly type="text" class="form-control" style="display:none" name="ID" rows="1"><?php echo $date[0]; ?></textarea>
         <textarea readonly type="text" class="form-control" style="display:none" name="lingua" rows="1"><?php echo $date[1]; ?></textarea>
-        <input type="submit" class="btn btn-danger"/>        
+        <br>
+        <button type="submit" class="btn btn-danger">Modifica <span class="glyphicon glyphicon-check"></button>       
+        <button class="btn"><a href="../Home">Back</a></button>      
     </form>
-    <br>
-    <button class="btn"><a href="../Home">Back</a></button>
 </div>
 </body>
 </html>

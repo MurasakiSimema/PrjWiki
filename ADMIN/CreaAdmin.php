@@ -17,10 +17,11 @@
             <label>Password:</label>
             <input type="password" class="form-control" name="password" placeholder="Inserire Password">  
             <label>Conferma Password:</label>
-            <input type="password" class="form-control" name="confirm" placeholder="Reinserire Password">  
-            <input type="submit" class="btn btn-danger">  
+            <input type="password" class="form-control" name="confirm" placeholder="Reinserire Password"> 
+            <br> 
+            <button type="submit" class="btn btn-danger">Crea <span class="glyphicon glyphicon-check"></span></button> 
+            <button class="btn"><a href="../Home">Back <span class="glyphicon glyphicon-check"></span></a></button> 
         </form>
-        <button class="btn"><a href="../Home">Back</a></button>
     </div>
 </body>
 </html>
