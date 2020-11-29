@@ -1,8 +1,8 @@
 <?php
-    $servername = "localhost";
-    $username = "Wiki";
-    $password = "password123";
-    $dbname = "wiki";
+$servername = "localhost";
+$username = "Wiki";
+$password = "password123";
+$dbname = "wiki";
 
 function InsertPage($ID, $title, $lingua, $dir, $descrizione="", $truedir){
     global $servername, $username, $password, $dbname;
