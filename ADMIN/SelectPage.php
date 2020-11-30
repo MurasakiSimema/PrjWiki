@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    session_start();
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +14,7 @@
 </head>
 <body>
 <div class="form-group container-fluid">
+<?php if(isset($_SESSION["utente"])) {?>
     <form action="ModPage.php" method="post">
         <label>ID:</label>
         <select class="form-control" name="ID">
@@ -21,9 +25,13 @@
             echo $res1;
         ?>
         </select>
-        <input type="submit" class="btn btn-danger"/>        
+        <button type="submit" class="btn btn-danger">Seleziona <span class="glyphicon glyphicon-check"></button>      
+        <button class="btn"><a href="../Home">Back</a></button> 
     </form>
-    <button class="btn"><a href="../Home">Back</a></button>
+    <?php }else {?>
+        <p><br>Solo un Editor può accedere a questa pagine</p>
+        <button class="btn"><a href="../Home">Back</a></button> 
+    <?php }?>
 </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "Wiki";
-$password = "password123";
+$password = "Password123";
 $dbname = "wiki";
 
 function InsertPage($ID, $title, $lingua, $dir, $descrizione="", $truedir){
@@ -209,10 +209,10 @@ function FindAdmin($utente, $pass){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql="SELECT * FROM utenze WHERE Utente='$utente' AND Password='$pass'";
+    $sql="SELECT Password FROM utenze WHERE Utente='$utente'";
 
     $result = $conn->query($sql);
-    return $result->num_rows;
+    return $result->fetch_assoc()["Password"];
     $conn->close();
 }
 
@@ -239,15 +239,15 @@ function InsertAdmin($user, $pass){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $pass=hash("sha256", $pass, false);
+    $pass=password_hash($pass, PASSWORD_DEFAULT);
     $sql = "INSERT INTO utenze (Utente, Password)
     VALUES ('$user', '$pass')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<br>Pagina Modificata con successo<br>";
+        echo "<br>Editor creato con successo<br>";
         echo '<br><a href="../ADMIN/CreaAdmin.php">Back</a>';
     } else {
-        echo "<br>Errore nella modifica della pagina<br>";
+        echo "<br>Errore nella creazione dell'user<br>";
         echo "<br>Error: " . $sql . "<br>" . $conn->error;
         echo '<br><a href="../ADMIN/CreaAdmin.php">Back</a>';
     }

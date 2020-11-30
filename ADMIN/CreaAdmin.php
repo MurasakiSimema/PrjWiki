@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +14,7 @@
 </head>
 <body>
     <div class="form-group container-fluid">
+    <?php if(isset($_SESSION["utente"])) {?>
         <form action="../PHP/GenAdmin.php" method="post">
             <label>Utente:</label>
             <input type="text" class="form-control" name="utente" placeholder="Inserire Utente">
@@ -22,6 +26,10 @@
             <button type="submit" class="btn btn-danger">Crea <span class="glyphicon glyphicon-check"></span></button> 
             <button class="btn"><a href="../Home">Back <span class="glyphicon glyphicon-check"></span></a></button> 
         </form>
+    <?php }else {?>
+        <p><br>Solo un Editor può accedere a questa pagine</p>
+        <button class="btn"><a href="../Home">Back</a></button> 
+    <?php }?>
     </div>
 </body>
 </html>

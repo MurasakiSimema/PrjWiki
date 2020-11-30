@@ -1,15 +1,23 @@
 <?php
-    $date = explode("/", $_POST["ID"]);
-    require '../PHP/MySQL.php';
-    $dir = DirFromID($date[0], $date[1])["TrueDir"];
-    require '../..' . $dir;
+    session_start();
 
-    $text = str_replace("</b>", "|***", str_replace("<b>", "***|", $text));
-    $text = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $text));
-    $text = str_replace("<br>", "\n", $text);
+    if(isset($_POST["ID"])){
+        $date = explode("/", $_POST["ID"]);
+        require '../PHP/MySQL.php';
+        $dir = DirFromID($date[0], $date[1])["TrueDir"];
+        require '../..' . $dir;
 
-    $desc = str_replace("</b>", "|***", str_replace("<b>", "***|", $desc));
-    $desc = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $desc));
+        $text = str_replace("</b>", "|***", str_replace("<b>", "***|", $text));
+        $text = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $text));
+        $text = str_replace("<br>", "\n", $text);
+
+        $desc = str_replace("</b>", "|***", str_replace("<b>", "***|", $desc));
+        $desc = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $desc));
+    }
+    else if(isset($_SESSION["utente"])){
+        echo "Errore nella selezione della pagina";
+        echo "<br><button class=\"btn\"><a href=\"SelectPage.php\">Back</a></button>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +31,7 @@
     <title>Home</title>
 </head>
 <body>
+<?php if(isset($_SESSION["utente"])) {?>
 <div class="form-group container-fluid">
     <form action="../PHP/ModValuePage.php" method="post">
         <label>Titolo:</label>
@@ -41,6 +50,10 @@
         <button type="submit" class="btn btn-danger">Modifica <span class="glyphicon glyphicon-check"></button>       
         <button class="btn"><a href="../Home">Back</a></button>      
     </form>
+    <?php }else {?>
+        <p><br>Solo un Editor può accedere a questa pagine</p>
+        <button class="btn"><a href="../Home">Back</a></button> 
+    <?php }?>
 </div>
 </body>
 </html>

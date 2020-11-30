@@ -1,10 +1,10 @@
 # PROGETTO WIKI
 ## Come installare
 1. Mettere la cartella "PrjWiki" dentro alla cartella di root 
-2. Creare il database dal file "wiki-db.sql" e creare un utenza con username "Wiki" e password "password123" o modificare le variabili globali nel file "PHP/MySQL.php" <br>
+2. Creare il database dal file "wiki-db.sql" e creare un utenza con username "Wiki" e password "Password123" o modificare le variabili globali nel file "PHP/MySQL.php" <br>
 **WARNING** <br>
 * Se il servername del db è diverso da "localhost" cambiarlo nella variabile globale nel file "PHP/MySQL.php" <br>
-* L'admin di base della wiki è "Admin" la cui passowrd è "password123", una volta creata una nuova utenza si consiglia di cancellarla dal db
+* L'admin di base della wiki è "Admin" la cui password è "password123", una volta creata una nuova utenza si consiglia di cancellarla dal db
 
 ---
 

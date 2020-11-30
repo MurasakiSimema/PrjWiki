@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="form-group container-fluid">
+    <?php if(isset($_SESSION["utente"])) {?>
     <form action="../PHP/GenPage.php" method="post">
         <label>ID:</label>
         <select class="form-control" name="ID" id="id" onchange="ControlloLingua()">
@@ -44,6 +45,10 @@
         <button type="submit" class="btn btn-danger" id="btn">Crea <span class="glyphicon glyphicon-check"></span></button>   
         <button class="btn"><a href="../Home">Back <span class="glyphicon glyphicon-home"></span></a></button>     
     </form>
+    <?php }else {?>
+        <p><br>Solo un Editor può accedere a questa pagine</p>
+        <button class="btn"><a href="../Home">Back</a></button> 
+    <?php }?>
 </div>
 </body>
 </html>
