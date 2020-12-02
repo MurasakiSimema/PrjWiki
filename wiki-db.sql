@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Creato il: Nov 29, 2020 alle 13:54
+-- Creato il: Dic 02, 2020 alle 07:00
 -- Versione del server: 8.0.18
 -- Versione PHP: 7.4.5
 
@@ -1215,7 +1215,7 @@ CREATE TABLE `utenze` (
 --
 
 INSERT INTO `utenze` (`Utente`, `Password`) VALUES
-('Admin', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f');
+('Admin', '$2y$10$IaqheptIaexxaY.rp4julu/s0bJb.DJY6LNNIUq.19vHxg9HUZsUO');
 
 --
 -- Indici per le tabelle scaricate
