@@ -31,19 +31,19 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione="", $truedir){
             VALUES (' . $lingua . ', 1, "' . $title . '", "' . $dir . '", "' . $descrizione . '", "' . $truedir .')'; 
         }
     }
-    
+
     if ($conn->query($sql) === TRUE) {
         echo "<br>Pagina creata con successo<br>";
         echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
+        $conn->close();
         return true;
     } else {
         echo "<br>Errore nella creazione della pagina<br>";
         echo "<br>Error: " . $sql . "<br>" . $conn->error;
         echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
+        $conn->close();
         return false;
     }
-    
-    $conn->close();
 }
 
 function ReadLingue(){
@@ -61,8 +61,8 @@ function ReadLingue(){
         $ret = $ret . '<option value = ' . $row["ID"] . '>' . $row["Lingua"] . '</option>';
     }
 
-    return $ret;
     $conn->close();
+    return $ret;
 }
 
 function FindPage(){
@@ -85,8 +85,8 @@ function FindPage(){
             $ret = $ret . '<li class="nav-item" style="display: none;"><a href = ' . $row["Dir"] . ' title = "' . $row["Descrizione"] . '">' . $row["Nome"] . ' - ' . $row["Lingua"] . '</a></li>';
     }
 
-    return $ret; 
     $conn->close();
+    return $ret; 
 }
 
 function FindLingue($id){
@@ -103,8 +103,8 @@ function FindLingue($id){
     while($row = $result->fetch_assoc()){
         $ret = $ret . '<li><a href="' . $row["Dir"] . '">' . $row["Lingua"] . '</a></li>';
     }
-    return $ret;
     $conn->close();
+    return $ret;
 }
 
 function FindLingueInternal($id){
@@ -121,8 +121,8 @@ function FindLingueInternal($id){
     while($row = $result->fetch_assoc()){
         $ret = $ret . $row["Lingua"] . ', ';
     }
-    return $ret;
     $conn->close();
+    return $ret;
 }
 
 function LinguaFromID($id){
@@ -137,6 +137,8 @@ function LinguaFromID($id){
     $result = $conn->query($sql);
 
     $row = $result->fetch_assoc();
+    
+    $conn->close();
     return $row["Lingua"];
 }
 
@@ -156,8 +158,8 @@ function FindID(){
         $ret = $ret . '<option value = ' . $row["ID"] . '>' . $row["Nome"] . ', ' . $row["ID"] . ', ' . $row["Lingua"] . '</option>';
     }
 
-    return $ret;
     $conn->close();
+    return $ret;
 }
 
 function FindIDLingua(){
@@ -176,8 +178,8 @@ function FindIDLingua(){
         $ret = $ret . '<option value = ' . $row["ID"] . '/' . $row["NomeLingua"] . '>' . $row["Nome"] . ', ' . $row["ID"] . ', ' . $row["Lingua"] . '</option>';
     }
 
-    return $ret;
     $conn->close();
+    return $ret;
 }
 
 function LastID(){
@@ -196,6 +198,7 @@ function LastID(){
     else
         $res = 1;
 
+    $conn->close();
     return $res;
 }
 
@@ -212,8 +215,8 @@ function FindAdmin($utente, $pass){
     $sql="SELECT Password FROM utenze WHERE Utente='$utente'";
 
     $result = $conn->query($sql);
-    return $result->fetch_assoc()["Password"];
     $conn->close();
+    return $result->fetch_assoc()["Password"];
 }
 
 function DirFromID($ID, $lingua){
@@ -227,8 +230,8 @@ function DirFromID($ID, $lingua){
     $sql = "SELECT TrueDir FROM pages WHERE ID = $ID AND Lingua = $lingua";
     $result = $conn->query($sql);
 
-    return $result->fetch_assoc();
     $conn->close();
+    return $result->fetch_assoc();
 }
 
 function InsertAdmin($user, $pass){
