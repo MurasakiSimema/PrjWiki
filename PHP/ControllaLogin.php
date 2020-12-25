@@ -15,7 +15,6 @@ else
 if($result!="" and password_verify($pass, $result)){
     session_start();
     $_SESSION['utente'] = $utente;
-    $_SESSION['password'] = $pass;
     header("Location: ../Home");
 }
 else {

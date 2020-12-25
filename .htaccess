@@ -1,5 +1,9 @@
 RewriteEngine on
 
+RewriteRule ^Home$ index.php
+
 RewriteRule ^BraveFrontierWiki/([a-zA-Z_0-9]+)/([a-zA-Z]+)$ PAGINE/$2/$1.php [L]
 
-RewriteRule ^Home$ index.php
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^PAGINE/([a-zA-Z_0-9]+)/([a-zA-Z]+).php$ PHP/CreaCache.php?Lin=$2&Pag=$1.php [L]
