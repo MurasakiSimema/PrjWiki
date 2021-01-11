@@ -4,7 +4,7 @@ $username = "Wiki";
 $password = "Password123";
 $dbname = "wiki";
 
-function InsertPage($ID, $title, $lingua, $dir, $descrizione="", $truedir){
+function InsertPage($ID, $title, $lingua, $dir, $descrizione, $truedir, $img, $paragrafo, $text){
     global $servername, $username, $password, $dbname;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,38 +12,113 @@ function InsertPage($ID, $title, $lingua, $dir, $descrizione="", $truedir){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    
-    $descrizione = str_replace("'","\'", $descrizione);
     if($ID!=-1){
-    $sql = "INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione, TrueDir)
-    VALUES ($lingua, $ID, '$title', '$dir', '$descrizione', '$truedir')";
+    $sql = $conn->prepare("INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione, TrueDir, Img, Paragrafo, Text)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $sql->bind_param("iisssssss", $lingua, $ID, $title, $dir, $descrizione, $truedir, $img, $paragrafo, $text);
     }
     else{
         $result = $conn->query("SELECT MAX(ID) AS MAXID FROM pages");
         $row = $result->fetch_assoc();
         if($row['MAXID']!=null){
-            $newid = $row['MAXID']++;
-            $sql = "INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione, TrueDir) 
-            VALUES ($lingua, $newid, '$title', '$dir', '$descrizione', '$truedir')";
+            $newid = $row['MAXID'] + 1;
+            $sql = $conn->prepare("INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione, TrueDir, Img, Paragrafo, Text) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $sql->bind_param("iisssssss", $lingua, $newid, $title, $dir, $descrizione, $truedir, $img, $paragrafo, $text);
         }
         else{
-            $sql = 'INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione, TrueDir)
-            VALUES (' . $lingua . ', 1, "' . $title . '", "' . $dir . '", "' . $descrizione . '", "' . $truedir .')'; 
+            $newid = 1;
+            $sql = $conn->prepare('INSERT INTO pages (Lingua, ID, Nome, Dir, Descrizione, TrueDir, Img, Paragrafo, Text)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+            $sql->bind_param("iisssssss", $lingua, $newid, $title, $dir, $descrizione, $truedir, $img, $paragrafo, $text);
         }
     }
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<br>Pagina creata con successo<br>";
+    if ($sql->execute()) {
+        echo "<br>Pagina creata con successo<br>";     
         echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
+        $sql->close();
         $conn->close();
         return true;
     } else {
         echo "<br>Errore nella creazione della pagina<br>";
-        echo "<br>Error: " . $sql . "<br>" . $conn->error;
+        echo "<br>Error: " . $conn->error;
         echo '<br><a href="../ADMIN/CreaPageIT.php">Back</a>';
+        $sql->close();
         $conn->close();
         return false;
     }
+}
+
+function ModificaPagina($ID, $lingua, $descrizione, $img, $paragrafo, $text){
+    global $servername, $username, $password, $dbname;
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = $conn->prepare("UPDATE pages SET Descrizione = ?, Img = ?, Paragrafo = ?, Text = ? WHERE ID = ? AND Lingua = ?");
+    $sql->bind_param("ssssii", $descrizione, $img, $paragrafo, $text, $ID, $lingua);
+
+    if ($sql->execute()) {
+        echo "<br>Pagina Modificata con successo<br>";
+        $sql->close();
+        $conn->close();
+        return true;
+    } else {
+        echo "<br>Errore nella modifica della pagina<br>";
+        echo "<br>Error: " . $conn->error;
+        echo '<br><a href="../ADMIN/ModPage.php">Back</a>';
+        $sql->close();
+        $conn->close();
+        return false;
+    }
+}
+
+function LeggiPagina($id, $lingua){
+    global $servername, $username, $password, $dbname;
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+
+    $sql = $conn->prepare('SELECT Nome, Descrizione, Paragrafo, Text, Img FROM pages WHERE ID = ? AND Lingua = ?');
+    $sql->bind_param("ii", $id, $lingua);
+    $sql->execute();
+    $sql->bind_result($nome, $descrizione, $paragrafo, $text, $img); 
+
+    $sql->fetch();
+    $ret = [$nome, $descrizione, $paragrafo, $text, $img];
+
+    $sql->close();
+    $conn->close();
+    return $ret;
+}
+
+function LeggiPaginaFromName($nome, $nomelingua){
+    global $servername, $username, $password, $dbname;
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+    $dir='/PrjWiki/BraveFrontierWiki/' . $nome . '/' . $nomelingua;
+
+    $sql = $conn->prepare('SELECT pages.ID, Descrizione, Paragrafo, Text, Img FROM pages INNER JOIN lingue ON pages.Lingua = lingue.ID WHERE Dir = ?');
+    $sql->bind_param("s", $dir);
+    $sql->execute();
+    $sql->bind_result($ID, $descrizione, $paragrafo, $text, $img); 
+
+    if($sql->fetch())
+        $ret = [$nome, $descrizione, $paragrafo, $text, $img, $ID];
+    else
+        $ret = false;
+        
+    $sql->close();
+    $conn->close();
+    return $ret;
 }
 
 function ReadLingue(){
@@ -97,12 +172,15 @@ function FindLingue($id){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT Dir, lingue.Lingua FROM lingue INNER JOIN pages ON pages.Lingua = lingue.ID WHERE pages.ID = $id";
-    $result = $conn->query($sql);
+    $sql = $conn->prepare('SELECT Dir, lingue.Lingua FROM lingue INNER JOIN pages ON pages.Lingua = lingue.ID WHERE pages.ID = ?');
+    $sql->bind_param("i", $id);
+    $sql->execute();
+    $sql->bind_result($dir, $lingua); 
     $ret = "";
-    while($row = $result->fetch_assoc()){
-        $ret = $ret . '<li><a href="' . $row["Dir"] . '">' . $row["Lingua"] . '</a></li>';
+    while($sql->fetch()){
+        $ret = $ret . '<li><a href="' . $dir . '">' . $lingua . '</a></li>';
     }
+    $sql->close();
     $conn->close();
     return $ret;
 }
@@ -115,12 +193,15 @@ function FindLingueInternal($id){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT Dir, lingue.Lingua FROM lingue INNER JOIN pages ON pages.Lingua = lingue.ID WHERE pages.ID = $id";
-    $result = $conn->query($sql);
+    $sql = $conn->prepare('SELECT lingue.Lingua FROM lingue INNER JOIN pages ON pages.Lingua = lingue.ID WHERE pages.ID = ?');
+    $sql->bind_param("i", $id);
+    $sql->execute();
+    $sql->bind_result($lingua); 
     $ret = "";
-    while($row = $result->fetch_assoc()){
-        $ret = $ret . $row["Lingua"] . ', ';
+    while($sql->fetch()){
+        $ret = $ret . $lingua . ', ';
     }
+    $sql->close();
     $conn->close();
     return $ret;
 }
@@ -133,13 +214,16 @@ function LinguaFromID($id){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT Lingua FROM lingue WHERE ID = $id";
-    $result = $conn->query($sql);
+    $sql = $conn->prepare("SELECT Lingua FROM lingue WHERE ID = ?");
+    $sql->bind_param("i", $id);
+    $sql->execute();
+    $sql->bind_result($lingua); 
 
-    $row = $result->fetch_assoc();
+    $sql->fetch();
     
+    $sql->close();
     $conn->close();
-    return $row["Lingua"];
+    return $lingua;
 }
 
 function FindID(){
@@ -202,21 +286,24 @@ function LastID(){
     return $res;
 }
 
-function FindAdmin($utente, $pass){
+function FindAdmin($utente){
     global $servername, $username, $password, $dbname;
-
-    $pass = hash("sha256", $pass, false);
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql="SELECT Password FROM utenze WHERE Utente='$utente'";
+    $sql = $conn->prepare("SELECT Password FROM utenze WHERE Utente=?");
+    $sql->bind_param("s", $utente);
+    $sql->execute();
+    $sql->bind_result($result); 
 
-    $result = $conn->query($sql);
+    $sql->fetch();
+    
+    $sql->close();
     $conn->close();
-    return $result->fetch_assoc()["Password"];
+    return $result;
 }
 
 function DirFromID($ID, $lingua){
@@ -227,11 +314,17 @@ function DirFromID($ID, $lingua){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT TrueDir FROM pages WHERE ID = $ID AND Lingua = $lingua";
-    $result = $conn->query($sql);
+    $sql = $conn->prepare("SELECT TrueDir FROM pages WHERE ID = ? AND Lingua = ?");
 
+    $sql->bind_param("ii", $ID, $lingua);
+    $sql->execute();
+    $sql->bind_result($result); 
+
+    $sql->fetch();
+    
+    $sql->close();
     $conn->close();
-    return $result->fetch_assoc();
+    return $result;
 }
 
 function InsertAdmin($user, $pass){
@@ -242,16 +335,18 @@ function InsertAdmin($user, $pass){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $pass=password_hash($pass, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO utenze (Utente, Password)
-    VALUES ('$user', '$pass')";
+    $pass = password_hash($pass, PASSWORD_DEFAULT);
+    $sql = $conn->prepare("INSERT INTO utenze (Utente, Password)
+    VALUES (?, ?)");
 
-    if ($conn->query($sql) === TRUE) {
+    $sql->bind_param("ss", $user, $pass);
+     
+    if ($sql->execute()) {
         echo "<br>Editor creato con successo<br>";
         echo '<br><a href="../ADMIN/CreaAdmin.php">Back</a>';
     } else {
         echo "<br>Errore nella creazione dell'user<br>";
-        echo "<br>Error: " . $sql . "<br>" . $conn->error;
+        echo "<br>Error: " . $conn->error;
         echo '<br><a href="../ADMIN/CreaAdmin.php">Back</a>';
     }
     $conn->close();

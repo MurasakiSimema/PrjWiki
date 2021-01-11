@@ -2,10 +2,15 @@
     session_start();
 
     if(isset($_POST["ID"])){
-        $date = explode("/", $_POST["ID"]);
+        $dati = explode("/", $_POST["ID"]);
         require '../PHP/MySQL.php';
-        $dir = DirFromID($date[0], $date[1])["TrueDir"];
-        require '../..' . $dir;
+        
+        $data = LeggiPagina($dati[0], $dati[1]);
+        $title = $data[0];
+        $desc = $data[1];
+        $par = $data[2];
+        $text = $data[3];
+        $img = $data[4];
 
         $text = str_replace("</b>", "|***", str_replace("<b>", "***|", $text));
         $text = str_replace("</mark>", "|**", str_replace("<mark>", "**|", $text));
@@ -43,9 +48,9 @@
         <label>Testo:</label>
         <textarea class="form-control" rows="20" name="text" placeholder="Inserire il Testo"  resize="none"><?php echo $text; ?></textarea>
         <label>Codice Unità</label>
-        <input type="text" class="form-control" name="img" placeholder="Inserire il codice Unit" value=<?php echo explode(".", explode("thum_", $thum)[1])[0]; ?>>
-        <textarea readonly type="text" class="form-control" style="display:none" name="ID" rows="1"><?php echo $date[0]; ?></textarea>
-        <textarea readonly type="text" class="form-control" style="display:none" name="lingua" rows="1"><?php echo $date[1]; ?></textarea>
+        <input type="text" class="form-control" name="img" placeholder="Inserire il codice Unit" value=<?php echo $img; ?>>
+        <textarea readonly type="text" class="form-control" style="display:none" name="ID" rows="1"><?php echo $dati[0]; ?></textarea>
+        <textarea readonly type="text" class="form-control" style="display:none" name="lingua" rows="1"><?php echo $dati[1]; ?></textarea>
         <br>
         <button type="submit" class="btn btn-danger">Modifica <span class="glyphicon glyphicon-check"></button>       
         <button class="btn"><a href="../Home">Back</a></button>      

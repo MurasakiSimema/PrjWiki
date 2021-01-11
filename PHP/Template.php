@@ -20,9 +20,9 @@
         <p><?php echo $desc; ?></p>
     </div>
     <div class="col-sm-9 text-centre">
-        <h2><img class="thum" src="<?php echo $thum;?>" alt="<?php echo $thum;?>"><?php echo $par;?></h2>
+        <h2><img class="thum" src='<?php echo "../../IMG/Unit_ills_thum_$img.png";?>' alt='<?php echo "Unit_ills_thum_$img.png";?>'><?php echo $par;?></h2>
         <p>
-            <img class="full" src="<?php echo $full;?>" alt="<?php echo $full;?>"> <?php echo $text;?>
+            <img class="full" src="<?php echo "../../IMG/Unit_ills_full_$img.png";?>" alt='<?php echo "Unit_ills_full_$img.png";?>'> <?php echo $text;?>
         </p>
     </div>
     <div class="col-sm-3 container-fluid">

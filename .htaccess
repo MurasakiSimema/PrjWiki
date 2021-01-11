@@ -5,4 +5,4 @@ RewriteRule ^Home$ index.php
 RewriteRule ^BraveFrontierWiki/([a-zA-Z_0-9]+)/([a-zA-Z]+)$ CACHE/$2/$1.php [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^PAGINE/([a-zA-Z_0-9]+)/([a-zA-Z]+).php$ PHP/CreaCache.php?Lin=$2&Pag=$1.php [L]
+RewriteRule ^CACHE/([a-zA-Z]+)/([a-zA-Z_0-9]+).php$ PHP/CreaCache.php?Lin=$1&Pag=$2 [L]

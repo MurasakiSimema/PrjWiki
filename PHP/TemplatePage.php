@@ -1,10 +1,9 @@
 <?php 
 $title = "{{title}}";
 $desc = "{{desc}}";
-$thum = "{{thum}}";
 $par = "{{par}}";
-$full = "{{full}}";
 $text = "{{text}}";
+$img = "{{img}}";
 $ID = {{ID}};
 
 if(file_exists('../../PHP/Template.php'))
