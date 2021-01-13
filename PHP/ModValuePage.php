@@ -13,8 +13,14 @@ $des = str_replace('"','\"', $des);
 $des = str_replace("|***", "</b>", str_replace("***|", "<b>", $des));
 $des = str_replace("|**", "</mark>", str_replace("**|", "<mark>", $des));
 
-$data=array($_POST["title"], $des, $_POST["par"], $text, "../../IMG/Unit_ills_thum_" . $_POST["img"] . ".png", "../../IMG/Unit_ills_full_" . $_POST["img"] . ".png", $_POST["ID"]);   
+$title = $_POST['title'];
+$lingua = LinguaFromID($_POST["lingua"]);
 
-if(ModificaPagina($_POST["ID"], $_POST["lingua"], $des, $_POST["img"],$_POST["par"], $text))
+$data=array($title, $des, $_POST["par"], $text, "../../IMG/Unit_ills_thum_" . $_POST["img"] . ".png", "../../IMG/Unit_ills_full_" . $_POST["img"] . ".png", $_POST["ID"]);   
+
+if(ModificaPagina($_POST["ID"], $_POST["lingua"], $des, $_POST["img"],$_POST["par"], $text)){
     echo '<br><button class="btn btn-danger"><a href="../ADMIN/SelectPage.php">Back</a></button>';
+    if(file_exists($_SERVER['DOCUMENT_ROOT'] . "/PrjWiki/CACHE/$lingua/$title.php"))
+        unlink($_SERVER['DOCUMENT_ROOT'] . "/PrjWiki/CACHE/$lingua/$title.php");
+}
 ?>
