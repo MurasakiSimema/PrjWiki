@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "127.0.0.1";
 $username = "Wiki";
 $password = "Password123";
 $dbname = "wiki";
@@ -150,7 +150,7 @@ function FindPage(){
     }
 
     //$sql = "SELECT Nome, Dir FROM pages WHERE Nome LIKE '$search%' LIMIT 5";
-    $sql = "SELECT Nome, Dir, lingue.Lingua, Descrizione FROM pages INNER JOIN lingue ON pages.Lingua = lingue.ID";
+    $sql = "SELECT Nome, Dir, lingue.Lingua, Descrizione FROM pages INNER JOIN lingue ON pages.Lingua = lingue.ID ORDER BY pages.ID DESC";
     $result = $conn->query($sql);
     $ret = "";
     while($row = $result->fetch_assoc()) {

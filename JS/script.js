@@ -41,7 +41,7 @@ function ControlloLingua() {
         var idx = lingua.split(", ")[1];
 
         for (i = 0; i < document.getElementById("id").children.length; i++) {
-            if (document.getElementById("id").children[i].innerHTML.split(", ")[1])
+            if (document.getElementById("id").children[i].innerHTML.split(", ")[1] == idx)
                 selectLingua.push(document.getElementById("id").children[i].innerHTML.split(", ")[2]);
         }
 
