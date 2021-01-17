@@ -19,6 +19,6 @@ if($result!="" and password_verify($pass, $result)){
 }
 else {
     echo "Identificazione non riuscita: nome utente o password errati <br />";
-    echo "Torna a pagina di <a href=\"../ADMIN/login.php\">login</a>";
+    echo "Torna a pagina di <a href=\"../ADMIN/Login.php\">login</a>";
 }
 ?>

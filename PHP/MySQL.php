@@ -1,7 +1,7 @@
 <?php
 $servername = "127.0.0.1";
 $username = "Wiki";
-$password = "Password123";
+$password = "password";
 $dbname = "wiki";
 
 function InsertPage($ID, $title, $lingua, $dir, $descrizione, $truedir, $img, $paragrafo, $text){

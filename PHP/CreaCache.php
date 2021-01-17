@@ -1,5 +1,5 @@
 <?php
-require 'MySql.php';
+require 'MySQL.php';
 //echo 'Lingua:' . $_GET["Lin"] . '</br>';
 //echo 'Pagina:' . $_GET["Pag"] . '</br>';
 
