@@ -1,4 +1,5 @@
-RewriteEngine on
+RewriteEngine On
+RewriteBase /PrjWiki
 
 RewriteRule ^Home$ index.php
 

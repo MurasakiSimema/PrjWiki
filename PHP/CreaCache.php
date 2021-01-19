@@ -1,12 +1,13 @@
 <?php
+error_reporting(E_ALL);
 require 'MySQL.php';
 //echo 'Lingua:' . $_GET["Lin"] . '</br>';
 //echo 'Pagina:' . $_GET["Pag"] . '</br>';
 
 class Template {
-    const TEMPLATE_DIR = '/PrjWiki/PHP/';
+    const TEMPLATE_DIR = '/membri/hoilserveracasa/PrjWiki/PHP';
     public static function parse($data = []) {
-        $file = $_SERVER['DOCUMENT_ROOT'] . self::TEMPLATE_DIR . 'TemplatePage.php';
+        $file = '/membri/hoilserveracasa/PrjWiki/PHP/TemplatePage.php';
         $html = file_get_contents($file);
         $variables = ['{{title}}', '{{desc}}', '{{par}}', '{{text}}', '{{img}}', '{{ID}}'];
         $html_content = str_replace($variables, $data, $html);
@@ -15,7 +16,7 @@ class Template {
     public static function save($data = [], $filename = 'post.php', $lingua) {   
         $html = self::parse($data);
         if(!empty($html)) {
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/PrjWiki/CACHE/' . $lingua . '/' . $filename, $html);
+            file_put_contents('/membri/hoilserveracasa/PrjWiki/CACHE/' . $lingua . '/' . $filename, $html);
             header("Refresh:0");
         }
     }

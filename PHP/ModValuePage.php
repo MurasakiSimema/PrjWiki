@@ -20,7 +20,7 @@ $data=array($title, $des, $_POST["par"], $text, "../../IMG/Unit_ills_thum_" . $_
 
 if(ModificaPagina($_POST["ID"], $_POST["lingua"], $des, $_POST["img"],$_POST["par"], $text)){
     echo '<br><button class="btn btn-danger"><a href="../ADMIN/SelectPage.php">Back</a></button>';
-    if(file_exists($_SERVER['DOCUMENT_ROOT'] . "/PrjWiki/CACHE/$lingua/$title.php"))
-        unlink($_SERVER['DOCUMENT_ROOT'] . "/PrjWiki/CACHE/$lingua/$title.php");
+    if(file_exists("/membri/hoilserveracasa/PrjWiki/CACHE/$lingua/$title.php"))
+        unlink("/membri/hoilserveracasa/PrjWiki/CACHE/$lingua/$title.php");
 }
 ?>
