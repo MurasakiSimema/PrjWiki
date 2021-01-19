@@ -1,8 +1,8 @@
 <?php
 $servername = "127.0.0.1";
-$username = "Wiki";
-$password = "password";
-$dbname = "wiki";
+$username = "hoilserveracasa";
+$password = "";
+$dbname = "my_hoilserveracasa";
 
 function InsertPage($ID, $title, $lingua, $dir, $descrizione, $truedir, $img, $paragrafo, $text){
     global $servername, $username, $password, $dbname;
